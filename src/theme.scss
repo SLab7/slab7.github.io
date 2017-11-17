@@ -322,6 +322,10 @@ $primary: #DB3B19;
 	    letter-spacing: .225rem;
 	    font-weight: 700;
 	    margin-bottom: 25px;
+
+	    @media screen and (max-width: 400px) {
+	    	font-size: 2.3rem;
+		}
 	}
 
 	h2 {
@@ -366,6 +370,10 @@ $primary: #DB3B19;
 			display: none;
 		}
 	}
+
+	@media screen and (max-width: 400px) {
+		height: 182px;
+	}
 }
 
 /* The typewriter cursor effect */
@@ -378,5 +386,14 @@ $primary: #DB3B19;
 @media screen and (max-width: 600px) {
 	body {
 		background-color: #dcdcdc;
+	}
+}
+
+#hero {
+	height: 100vh;
+	min-height: 38em;
+
+	@media screen and (max-width: 400px) {
+		min-height: 50em;
 	}
 }
