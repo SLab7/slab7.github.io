@@ -1,3 +1,4 @@
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
@@ -81,6 +82,7 @@ var config = {
 
 if (process.env.NODE_ENV === 'production') {
     config.devtool = 'source-map';
+    config.plugins.push(new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]));
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,
         compress: {
