@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "NODE_ENV=production npm run build && aws --profile=slab7-website s3 sync dist s3://slab7"
   },
   "author": "",
   "license": "ISC",
