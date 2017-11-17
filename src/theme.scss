@@ -158,7 +158,7 @@ $primary: #DB3B19;
 .ServiceBlockRescue {
 	background-image:url(./rescue.jpg);
     background-size: cover;
-    background-position: center 0px;
+    background-position: center -20px;
     background-repeat: no-repeat;
 
     h3 {
@@ -382,10 +382,14 @@ $primary: #DB3B19;
 	50% { border-color: #DB3B19; }
 }
 
+#hero-wrap {
+	background-image:url(./hero.jpg);
+	background-repeat: no-repeat;
+	background-position: 75% 100%;
+	background-size: contain;
 
-@media screen and (max-width: 600px) {
-	body {
-		background-color: #dcdcdc;
+	@media screen and (max-width: 600px) {
+		background-image: linear-gradient(rgba(220, 220, 220, 0.25), rgba(220, 220, 220, 0.25)),url(./hero.jpg);
 	}
 }
 
