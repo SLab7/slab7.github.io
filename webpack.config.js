@@ -8,7 +8,7 @@ var config = {
     entry: './src/app.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name]-[hash].js'
     },
     module: {
         rules: [
@@ -61,7 +61,9 @@ var config = {
             Popper: ['popper.js', 'default'],
             'Tether': 'tether'
         }),
-        new ExtractTextPlugin('style.css'),
+        new ExtractTextPlugin({
+            filename: '[name]-[hash].css'
+        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src', 'index.html'),
             inject: false,
