@@ -29,6 +29,18 @@ $primary: #DB3B19;
 	}
 }
 
+@media (max-width: 991px) {
+	.navbar-expand-lg #my-logo {
+		display: none !important;
+	}
+}
+
+@media (min-width: 992px) {
+	.navbar-expand-lg #mobile-logo {
+		display: none !important;
+	}
+}
+
 #who-are-we {
 	background: url(https://bootstrapmade.com/demo/themes/Knight/img/pw_maze_black_2X.png) left top repeat;
 	text-align: center;
