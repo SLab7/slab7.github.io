@@ -17,9 +17,6 @@
   <% for (var css in htmlWebpackPlugin.files.css) { %>
     <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
   <% } %>
-  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-    <script async src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-  <% } %>
 </head>
 <body style="font-family: 'Open Sans', sans-serif;">
   <div id="hero-wrap">
@@ -279,6 +276,9 @@
   ]
 }
 </script>
+  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script async src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+  <% } %>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109852477-1"></script>
