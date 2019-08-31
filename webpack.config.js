@@ -83,14 +83,8 @@ const config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-    config.devtool = 'source-map';
+    config.mode = 'production';
     config.plugins.push(new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]));
-    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
-        compress: {
-            warnings: true
-        }
-    }));
     config.plugins.push(new webpack.LoaderOptionsPlugin({
         minimize: true
     }));
