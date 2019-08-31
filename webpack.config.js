@@ -1,5 +1,6 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
@@ -8,7 +9,8 @@ const config = {
     entry: './src/app.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name]-[hash].js'
+        filename: '[name]-[hash].js',
+        publicPath: 'dist/'
     },
     module: {
         rules: [
@@ -21,6 +23,7 @@ const config = {
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
+                    publicPath: '',
                     fallback: 'style-loader',
                     use: 'css-loader'
                 })
@@ -28,6 +31,7 @@ const config = {
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
+                    publicPath: '',
                     fallback: 'style-loader',
                     use: [
                         {
@@ -71,10 +75,20 @@ const config = {
                 collapseWhitespace: true,
                 preserveLineBreaks: true
             }
+        }),
+        new FileManagerPlugin({
+            onEnd: {
+                move: [
+                    {
+                        source: './dist/index.html',
+                        destination: './index.html'
+                    }
+                ]
+            }
         })
     ],
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: __dirname,
         compress: true,
         port: 9000,
         hot: false,
@@ -84,7 +98,10 @@ const config = {
 
 if (process.env.NODE_ENV === 'production') {
     config.mode = 'production';
-    config.plugins.push(new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]));
+    config.plugins.push(new CleanWebpackPlugin([
+        'index.html',
+        path.resolve(__dirname, 'dist')
+    ]));
     config.plugins.push(new webpack.LoaderOptionsPlugin({
         minimize: true
     }));
